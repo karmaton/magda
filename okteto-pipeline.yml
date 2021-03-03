@@ -1,8 +1,8 @@
 icon: https://upload.wikimedia.org/wikipedia/commons/8/8b/Don_Pelayo.jpg
 deploy:
-  - okteto build -t okteto.dev/api:${OKTETO_GIT_COMMIT} api
-  - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} frontend
-  - helm upgrade --install movies chart --set tag=${OKTETO_GIT_COMMIT}
+  - okteto build -t okteto.dev/api:${a97f1223913344ff4743230fa43d1909d3928762} api
+  - okteto build -t okteto.dev/frontend:${a97f1223913344ff4743230fa43d1909d3928762} frontend
+  - helm upgrade --install movies chart --set tag=${a97f1223913344ff4743230fa43d1909d3928762}
 devs:
   - api/okteto.yml
   - frontend/okteto.yml
