@@ -1,15 +1,15 @@
 icon: https://upload.wikimedia.org/wikipedia/commons/8/8b/Don_Pelayo.jpg
 deploy:
   # update magda helm repo
-  - helm repo update
+  #- helm repo update
   # update magda chart dependencies
   - helm repo add mittwald https://helm.mittwald.de
   - helm repo update
 
   # Create roles and service accounts
-  - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/rbac.yaml
+  #- kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/rbac.yaml
   # Create actual deployment
-  - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/deployment.yaml
+  #- kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/deployment.yaml
   
   - helm repo add magda-io https://charts.magda.io
   - helm dep up ./chart
