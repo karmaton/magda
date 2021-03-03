@@ -3,6 +3,12 @@ deploy:
   # update magda helm repo
   - helm repo update
   # update magda chart dependencies
-  - yarn update-all-charts
+  - helm repo add mittwald https://helm.mittwald.de
+  - helm repo update
+
+  # Create roles and service accounts
+  - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/rbac.yaml
+  # Create actual deployment
+  - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/deployment.yaml
   # deploy the magda chart from magda helm repo
   - helm upgrade --install --timeout 9999s --wait -f deploy/helm/minikube-dev.yml magda deploy/helm/local-deployment 
