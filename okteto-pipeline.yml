@@ -1,8 +1,8 @@
 icon: https://upload.wikimedia.org/wikipedia/commons/8/8b/Don_Pelayo.jpg
 deploy:
-  - okteto build -t okteto.dev/api:${ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEFvcbu1EEOTBgTalbM5HErgJsHDk7oufbKMDS3563LqjIzZQE/11bBTFHXvD0k0cKIm/h6Z3DUz7iczTo2obuCklpl92yBAAXqWorcxyytCPFPPMgD5N0jfKC4rOrc0PydRbRMIlRsT+PF876f8AltBm8csL1qXwpw0t531C4PQfV49lfgnnq6C58tI5VYVKi3jWAWeXRyDRXzXmPZNkbwyAD1kASia36ecHIoVQ5iyjCvR6BsGV2jJXpvqGQSgMnGdQ3zrKS/exggTJ58gTasjFeH0X+sV53BdZnHulQAx4Sf+kwfx8JhOEt5stdHvW6SHYPPtHRgAODgGVrfoX user@WinDev2101Eval} api
-  - okteto build -t okteto.dev/frontend:${ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEFvcbu1EEOTBgTalbM5HErgJsHDk7oufbKMDS3563LqjIzZQE/11bBTFHXvD0k0cKIm/h6Z3DUz7iczTo2obuCklpl92yBAAXqWorcxyytCPFPPMgD5N0jfKC4rOrc0PydRbRMIlRsT+PF876f8AltBm8csL1qXwpw0t531C4PQfV49lfgnnq6C58tI5VYVKi3jWAWeXRyDRXzXmPZNkbwyAD1kASia36ecHIoVQ5iyjCvR6BsGV2jJXpvqGQSgMnGdQ3zrKS/exggTJ58gTasjFeH0X+sV53BdZnHulQAx4Sf+kwfx8JhOEt5stdHvW6SHYPPtHRgAODgGVrfoX user@WinDev2101Eval} frontend
-  - helm upgrade --install movies chart --set tag=${ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEFvcbu1EEOTBgTalbM5HErgJsHDk7oufbKMDS3563LqjIzZQE/11bBTFHXvD0k0cKIm/h6Z3DUz7iczTo2obuCklpl92yBAAXqWorcxyytCPFPPMgD5N0jfKC4rOrc0PydRbRMIlRsT+PF876f8AltBm8csL1qXwpw0t531C4PQfV49lfgnnq6C58tI5VYVKi3jWAWeXRyDRXzXmPZNkbwyAD1kASia36ecHIoVQ5iyjCvR6BsGV2jJXpvqGQSgMnGdQ3zrKS/exggTJ58gTasjFeH0X+sV53BdZnHulQAx4Sf+kwfx8JhOEt5stdHvW6SHYPPtHRgAODgGVrfoX user@WinDev2101Eval}
-devs:
-  - api/okteto.yml
-  - frontend/okteto.yml
+  # update magda helm repo
+  - helm repo update
+  # update magda chart dependencies
+  - yarn update-all-charts
+  # deploy the magda chart from magda helm repo
+  - helm upgrade --install --timeout 9999s --wait -f deploy/helm/minikube-dev.yml magda deploy/helm/local-deployment 
