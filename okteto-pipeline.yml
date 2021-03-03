@@ -10,5 +10,9 @@ deploy:
   - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/rbac.yaml
   # Create actual deployment
   - kubectl apply -f https://raw.githubusercontent.com/mittwald/kubernetes-replicator/master/deploy/deployment.yaml
+  
+  - helm repo add magda-io https://charts.magda.io
+  - helm dep up ./chart
+  - helm upgrade --install --timeout 9999s --debug --wait magda ./chart
   # deploy the magda chart from magda helm repo
-  - helm upgrade --install --timeout 9999s --wait -f deploy/helm/minikube-dev.yml magda deploy/helm/local-deployment 
+  # otros - helm upgrade --install --timeout 9999s --wait -f deploy/helm/minikube-dev.yml magda deploy/helm/local-deployment 
