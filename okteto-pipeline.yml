@@ -1,4 +1,4 @@
-icon: https://apps.okteto.com/movies/icon.png
+icon: https://upload.wikimedia.org/wikipedia/commons/8/8b/Don_Pelayo.jpg
 deploy:
   - okteto build -t okteto.dev/api:${OKTETO_GIT_COMMIT} api
   - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} frontend
